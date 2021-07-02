@@ -9,7 +9,9 @@
   "author": "mridula rao",
   "license": "ISC",
   "dependencies": {
+    "@mailchimp/mailchimp_marketing": "^3.0.52",
     "ejs": "^3.1.6",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.9"
   }
 }
