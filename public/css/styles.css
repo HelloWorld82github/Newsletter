@@ -1,6 +1,6 @@
 body {
-    background-color: #F9F3F3;
-    color: black;
+    background-color: black;
+    color: #FAF1E6;
 }
 
 .longer-blog-post {
@@ -11,21 +11,26 @@ body {
 
 .blog-header {
     line-height: 1;
-    border-bottom: 1px solid #e5e5e5;
-    color: black;
+    border-bottom: 1px solid black;
   }
   
   .blog-header-logo {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
-    font-size: 2.25rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 4rem;
+    color: #FAF1E6; 
   }
   
   .blog-header-logo:hover {
     text-decoration: none;
   }
   
-  h1, h2, h3, h4, h5, h6 {
+  h1{
     font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+  }
+
+  h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 550;
   }
   
   .display-4 {
@@ -98,15 +103,25 @@ body {
     margin-bottom: 1.25rem;
     color: #727272;
   }
+
+  /* about */
+  .about-block p {
+    font-family: 'Esteban', 'Times New Roman', serif;
+    /* background-color: #FFF1F1; */
+  }
+
+  .about-block {
+    background-color: #FAF1E6;
+  }
   
   /*
    * Footer
    */
   .blog-footer {
     padding: 2.5rem 0;
-    color: #727272;
+    color: #FAF1E6;
     text-align: center;
-    background-color: #f9f9f9;
+    background-color: black;
     border-top: .05rem solid #e5e5e5;
   }
   .blog-footer p:last-child {

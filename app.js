@@ -14,6 +14,13 @@ app.get("/", function(req, res){
 
 });
 
+app.get("/blogpost_template", function(req, res){
+    res.render('blogpost_template', {
+        titleOfToday : 'Hasan Minaj: Comedian 2.0'
+    });
+
+});
+
 app.get("/subscribe", function(req, res){
     res.sendFile(__dirname + "/subscribe.html");
 })
