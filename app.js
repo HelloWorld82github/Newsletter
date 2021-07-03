@@ -6,6 +6,8 @@ app.use(express.urlencoded());
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
+let contentBlogPost = "";
+let titleBlogPost = "";
 
 app.get("/", function(req, res){
     res.render('titlepage', {
@@ -16,14 +18,27 @@ app.get("/", function(req, res){
 
 app.get("/blogpost_template", function(req, res){
     res.render('blogpost_template', {
-        titleOfToday : 'Hasan Minaj: Comedian 2.0'
+        titleOfToday : titleBlogPost,
+        contentOfToday : contentBlogPost
     });
-
 });
+
+app.get("/compose", function(req, res){
+    res.render('empty_template', {});
+});
+
+app.post("/compose", function(req, res){
+    titleBlogPost = req.body.title;
+    contentBlogPost = req.body.content;
+    res.redirect("/blogpost_template");
+});
+
+
+// Subscribe //
 
 app.get("/subscribe", function(req, res){
     res.sendFile(__dirname + "/subscribe.html");
-})
+});
 
 client.setConfig({
     apiKey: "8e62312e76c94bbbe10fa2af9a88ae27-us6",
@@ -65,6 +80,7 @@ app.post("/subscribe", function(req, res){
         //run();
     } );
 
+    // Subscribed //
 
 app.listen(3000, function(req,res){
     console.log("Server running on port 3000");
