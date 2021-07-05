@@ -1,21 +1,45 @@
 <%- include('header'); -%> 
 
-     <main class="container">
-        <div class="row g-5">
-          <div class="col-md-8">
-            <h3 class="pb-4 mb-4 fst-italic border-bottom">
-              Latest Blogpost
-            </h3>
-            <article class="blog-post">
-                <h1 class="blog-post-title fst-italic">  <%= titleOfToday %> </h1>
-                <p class="blog-post-meta">January 1, 2021 by Mridula</p>
+<main class="container">
+  <div class="row g-5">
+    <div class="col-md-8">
+      <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        Latest Blogpost
+      </h3>
 
-                <p> <%=  contentOfToday %> </p>
-            </article>
-            <hr>
-           </div>
+      <article class="blog-post">
+        <h1 class="blog-post-title fst-italic"><%= title %></h1>
+        <p class="blog-post-meta">January 1, 2021 by Mridula</p>
+        <p><%= content %></p>
+      </article>
+      <hr>
+    </div>
+
+    <div class="col-md-4" style="margin-top: 100px;">
+      <div class="position-sticky" style="top: 2rem;">
+        <div class="p-4 mb-3 rounded text-dark about-block">
+          <h4 class="fst-italic">About</h4>
+          <p class="mb-0">Hi! With a cluttered mind, I jot down my ideas here. You'll find random topics - articles about the books I read or songs I heard, opinions about content, or some daily epiphanies and learning about navigating life as a young adult. Hope you enjoy!</p>
         </div>
-    </main>
-</body>
+
+        <div class="p-4">
+          <h4>Archives</h4>
+          <ol class="list-unstyled mb-0">
+            <li><a href="#">New Blogpost</a></li>
+          </ol>
+        </div>
+
+        <div class="p-4">
+          <h4 class="fst-italic">Elsewhere</h4>
+          <ol class="list-unstyled">
+            <i class="fa fa-github icons" aria-hidden="true"></i>
+            <i class="fa fa-instagram social icons" aria-hidden="true"></i>
+            <i class="fa fa-envelope social icons" aria-hidden="true"></i>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main> 
 <%- include('footer'); -%>
-</html>

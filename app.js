@@ -1,38 +1,58 @@
 const express = require("express");
 const client = require("@mailchimp/mailchimp_marketing");
+const _ = require('lodash');
+
 const app = express();
 
 app.use(express.urlencoded());
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
-let contentBlogPost = "";
-let titleBlogPost = "";
 
 app.get("/", function(req, res){
     res.render('titlepage', {
-        titleOfToday : 'Hasan Minaj: Comedian 2.0'
-    });
-
-});
-
-app.get("/blogpost_template", function(req, res){
-    res.render('blogpost_template', {
-        titleOfToday : titleBlogPost,
-        contentOfToday : contentBlogPost
+        posts: posts
     });
 });
+
+// Compose and post into title page //
+
+let posts = [];
 
 app.get("/compose", function(req, res){
     res.render('empty_template', {});
 });
 
 app.post("/compose", function(req, res){
-    titleBlogPost = req.body.title;
-    contentBlogPost = req.body.content;
-    res.redirect("/blogpost_template");
+    // titleBlogPost = req.body.title;
+    // contentBlogPost = req.body.content;
+    // res.redirect("/blogpost_template");
+    const post = {
+        title: req.body.postTitle,
+        content: req.body.postBody
+    };
+
+    posts.push(post);
+    res.redirect("/");
 });
 
+
+app.get("/posts/:postName", function(req, res){
+    const requestedTitle = _.lowerCase(req.params.postName);
+
+    posts.forEach(function(post){
+        var storedTitle = _.lowerCase(post.title);
+
+        if(storedTitle === requestedTitle) {
+            res.render('blogpost_template',
+            { title: post.title, 
+              content: post.content
+            });
+        } 
+    });
+});
+
+//       //
 
 // Subscribe //
 
