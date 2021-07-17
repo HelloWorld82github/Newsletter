@@ -17,7 +17,13 @@ body {
   .blog-header-logo {
     font-family: 'EB Garamond', serif;
     font-size: 4rem;
-    color: #FAF1E6; 
+    color: #FAF1E6;
+  } 
+  @media (min-width: 768px) {
+    .blog-header-logo {font-size: 3rem;}
+  }
+  @media (min-width: 320px) and (max-width: 768px) {
+    .blog-header-logo {font-size: 2rem;}
   }
   
   .blog-header-logo:hover {

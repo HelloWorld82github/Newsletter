@@ -1,13 +1,18 @@
 const express = require("express");
 const client = require("@mailchimp/mailchimp_marketing");
+const mongoose = require("mongoose");
 const _ = require('lodash');
 
 const app = express();
+mongoose.connect('mongodb://localhost:27017/newsletter', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.set('useUnifiedTopology', true);
 
 app.use(express.urlencoded());
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
+
+let posts = [];
 
 app.get("/", function(req, res){
     res.render('titlepage', {
@@ -16,8 +21,6 @@ app.get("/", function(req, res){
 });
 
 // Compose and post into title page //
-
-let posts = [];
 
 app.get("/compose", function(req, res){
     res.render('empty_template', {});

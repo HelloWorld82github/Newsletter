@@ -8,11 +8,11 @@
       </h3>
 
       <article class="blog-post">
-        <% posts.forEach(function(post){ %>
-          <h1 class="blog-post-title fst-italic"><%= post.title %></h1>
-          <p class="blog-post-meta">January 1, 2021 by Mridula</p>
-          <p><%= post.content  %></p>
-        <% }) %>
+          <% posts.forEach(function(post){  %>
+            <h1 class="blog-post-title fst-italic"><%= post.title %></h1>
+            <p class="blog-post-meta">January 1, 2021 by Mridula</p>
+            <p> <%= post.content %></p>
+          <%  }) %>
       </article>
       <hr>
     </div>
@@ -27,7 +27,10 @@
         <div class="p-4">
           <h4>Archives</h4>
           <ol class="list-unstyled mb-0">
-            <li><a href="/blogpost_template">New Blogpost</a></li>
+            <% for(var i = 0; i<posts.length; i++){ %>
+              <li><a href="/posts/<%= posts[i].title %>"><%= posts[i].title %></a></li>
+            <% } %>
+            <!-- <li><a href="/blogpost_template">New Blogpost</a></li> -->
           </ol>
         </div>
 
