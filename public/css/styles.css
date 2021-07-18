@@ -3,6 +3,11 @@ body {
     color: #FAF1E6;
 }
 
+a:link, a:visited, a:link:active, a:visited:active {
+  color: #FAF1E6;
+  text-decoration: none;
+}
+
 .longer-blog-post {
     font-size: 1.25rem;
 }
@@ -119,6 +124,12 @@ body {
   .about-block {
     background-color: #FAF1E6;
   }
+
+  /* Archive */
+
+  .archive-links {
+    font-family: 'Open Sans', sans-serif;
+  }
   
   /*
    * Footer
@@ -135,4 +146,5 @@ body {
   }
   .icons {
       padding: 3%;
+      color: wheat;
   }

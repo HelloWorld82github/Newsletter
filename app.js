@@ -3,20 +3,59 @@ const client = require("@mailchimp/mailchimp_marketing");
 const mongoose = require("mongoose");
 const _ = require('lodash');
 
+
 const app = express();
-mongoose.connect('mongodb://localhost:27017/newsletter', {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.set('useUnifiedTopology', true);
 
 app.use(express.urlencoded());
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
+mongoose.connect('mongodb+srv://admin_mridula:pLAPTOP2004@newsletter1.a6k9k.mongodb.net/newsletter', {useNewUrlParser: true});
 
-let posts = [];
+
+const newPostSchema = {
+    title : {
+        type : String,
+        required : true
+    },
+    content : {
+        type : String,
+        required : true
+    }
+};
+
+const Post = mongoose.model("Post", newPostSchema);
+// const post1 = new Post ({
+//     title : "Hasan Minhaj, Comedian 2.0",
+//     content : "Hasan Minhaj's Patriot Act is deeply missed."
+// });
+// const post2 = new Post({
+//     title : "Homecoming King",
+//     content : "Hasan Minhaj's brilliant comedy special!!"
+// });
+
+//let posts = [];
 
 app.get("/", function(req, res){
-    res.render('titlepage', {
-        posts: posts
+    // Post.findById(requiredId, function(err, post){
+    //     if(err) console.log(err);
+    //     else {
+    //         res.render('titlepage',
+    //         {
+    //             title : post.title,
+    //             content : post.content,
+    //             posts: posts
+    //         });
+    //     }
+    // });
+
+    Post.find({}, function(err, post){
+        if(err) console.log(err);
+        else {
+            res.render('titlepage', {
+                posts : post
+            });
+        }
     });
 });
 
@@ -27,32 +66,45 @@ app.get("/compose", function(req, res){
 });
 
 app.post("/compose", function(req, res){
-    // titleBlogPost = req.body.title;
-    // contentBlogPost = req.body.content;
-    // res.redirect("/blogpost_template");
-    const post = {
-        title: req.body.postTitle,
-        content: req.body.postBody
-    };
+    let titleName = _.capitalize(req.body.postTitle);
+    let contentName = req.body.postBody;
+    const post = new Post({
+        title : titleName,
+        content : contentName
+    })
+    post.save(function(err){
+        if(err) console.log(err);
+        else res.redirect("/");
+    });
 
-    posts.push(post);
-    res.redirect("/");
+    // posts.push(post);
+    // res.redirect("/");
 });
 
 
-app.get("/posts/:postName", function(req, res){
-    const requestedTitle = _.lowerCase(req.params.postName);
+app.get("/posts/:postId", function(req, res){
+    const requestedId = req.params.postId;
 
-    posts.forEach(function(post){
-        var storedTitle = _.lowerCase(post.title);
-
-        if(storedTitle === requestedTitle) {
+    Post.findById(requestedId, function(err, post){
+        if(err) console.log(err);
+        else {
             res.render('blogpost_template',
-            { title: post.title, 
-              content: post.content
+            {
+                title : post.title,
+                content : post.content
             });
-        } 
+        }
     });
+    // posts.forEach(function(post){
+    //     var storedTitle = _.lowerCase(post.title);
+
+    //     if(storedTitle === requestedTitle) {
+    //         res.render('blogpost_template',
+    //         { title: post.title, 
+    //           content: post.content
+    //         });
+    //     } 
+    // });
 });
 
 //       //

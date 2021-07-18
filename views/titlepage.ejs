@@ -28,7 +28,7 @@
           <h4>Archives</h4>
           <ol class="list-unstyled mb-0">
             <% for(var i = 0; i<posts.length; i++){ %>
-              <li><a href="/posts/<%= posts[i].title %>"><%= posts[i].title %></a></li>
+              <li class="archive-links"><a href="/posts/<%= posts[i]._id %>"><%= posts[i].title %></a></li>
             <% } %>
             <!-- <li><a href="/blogpost_template">New Blogpost</a></li> -->
           </ol>
@@ -37,7 +37,7 @@
         <div class="p-4">
           <h4 class="fst-italic">Elsewhere</h4>
           <ol class="list-unstyled">
-            <i class="fa fa-github icons" aria-hidden="true"></i>
+            <a class="fa fa-github icons" aria-hidden="true" href=""></a>
             <i class="fa fa-instagram social icons" aria-hidden="true"></i>
             <i class="fa fa-envelope social icons" aria-hidden="true"></i>
           </ol>
