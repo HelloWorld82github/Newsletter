@@ -8,11 +8,9 @@
       </h3>
 
       <article class="blog-post">
-          <% posts.forEach(function(post){  %>
-            <h1 class="blog-post-title fst-italic"><%= post.title %></h1>
-            <p class="blog-post-meta">January 1, 2021 by Mridula</p>
-            <p> <%= post.content %></p>
-          <%  }) %>
+        <h1 class="blog-post-title fst-italic"><%= title %></h1>
+        <p class="blog-post-meta">January 1, 2021 by Mridula</p>
+        <p> <%= content %></p>
       </article>
       <hr>
     </div>
@@ -20,12 +18,11 @@
     <div class="col-md-4" style="margin-top: 100px;">
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4 mb-3 rounded text-dark about-block">
-          <h4 class="fst-italic">About</h4>
+          <h3 class="fst-italic">About</h4>
           <p class="mb-0">Hi! With a cluttered mind, I jot down my ideas here. You'll find random topics - articles about the books I read or songs I heard, opinions about content, or some daily epiphanies and learning about navigating life as a young adult. Hope you enjoy!</p>
         </div>
-
         <div class="p-4">
-          <h4>Archives</h4>
+          <h4><em>Archives</em></h4>
           <ol class="list-unstyled mb-0">
             <% for(var i = 0; i<posts.length; i++){ %>
               <li class="archive-links"><a href="/posts/<%= posts[i]._id %>"><%= posts[i].title %></a></li>
@@ -33,7 +30,7 @@
             <!-- <li><a href="/blogpost_template">New Blogpost</a></li> -->
           </ol>
         </div>
-
+        
         <div class="p-4">
           <h4 class="fst-italic">Elsewhere</h4>
           <ol class="list-unstyled">
@@ -45,9 +42,10 @@
       </div>
     </div>
   </div>
-
+        
 </main> 
-
-  </body>
-  <%- include('footer'); -%>
+        
+</body>
+        
+  <%- include ('footer'); -%>
 </html>

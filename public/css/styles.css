@@ -130,6 +130,9 @@ a:link, a:visited, a:link:active, a:visited:active {
   .archive-links {
     font-family: 'Open Sans', sans-serif;
   }
+  .p-4 h4{
+    text-decoration: underline;
+  }
   
   /*
    * Footer
