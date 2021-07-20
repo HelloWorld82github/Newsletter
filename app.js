@@ -10,9 +10,8 @@ app.use(express.urlencoded());
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
-mongoose.connect('mongodb+srv://admin_mridula:pLAPTOP2004@newsletter1.a6k9k.mongodb.net/newsletter', {useNewUrlParser: true});
 
-let id = 0;
+mongoose.connect('mongodb+srv://admin_mridula:pLAPTOP2004@newsletter1.a6k9k.mongodb.net/newsletter', {useNewUrlParser: true});
 
 const newPostSchema = {
     id : String,
@@ -53,12 +52,9 @@ app.get("/", function(req, res){
     Post.find({}).sort([['id', -1]]).limit(1).exec(function(err, posts){
         if(!err) {
             posts.forEach(function(post) {
-                // console.log(post.content);
-                // console.log(post.title);
                 res.render('titlepage', {
                     title: post.title,
                     content: post.content,
-                    posts: posts
                 });
             });
         };
@@ -105,8 +101,6 @@ app.get("/posts/:postId", function(req, res){
     Post.findById(requestedId, function(err, post){
         if(err) console.log(err);
         else {
-            console.log(post);
-            console.log(post.content);
             res.render('blogpost_template',
             {
                 title : post.title,
@@ -127,6 +121,17 @@ app.get("/posts/:postId", function(req, res){
 });
 
 //       //
+
+app.get("/archives", function(req, res){
+    Post.find({}, function(err, posts){
+        if(err) console.log(err);
+        else {
+            res.render('archives', {
+                posts : posts
+            });
+        } 
+    });
+})
 
 // Subscribe //
 

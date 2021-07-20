@@ -22,13 +22,7 @@
           <p class="mb-0">Hi! With a cluttered mind, I jot down my ideas here. You'll find random topics - articles about the books I read or songs I heard, opinions about content, or some daily epiphanies and learning about navigating life as a young adult. Hope you enjoy!</p>
         </div>
         <div class="p-4">
-          <h4><em>Archives</em></h4>
-          <ol class="list-unstyled mb-0">
-            <% for(var i = 0; i<posts.length; i++){ %>
-              <li class="archive-links"><a href="/posts/<%= posts[i]._id %>"><%= posts[i].title %></a></li>
-            <% } %>
-            <!-- <li><a href="/blogpost_template">New Blogpost</a></li> -->
-          </ol>
+          <h4><a href="/archives">Archives</a></h4>
         </div>
         
         <div class="p-4">
@@ -43,9 +37,9 @@
     </div>
   </div>
         
-</main> 
+  </main> 
         
-</body>
+  </body>
         
   <%- include ('footer'); -%>
 </html>

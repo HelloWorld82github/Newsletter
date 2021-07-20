@@ -1,0 +1,19 @@
+<%- include('header'); -%> 
+<div class="cards-layout row">
+    <% posts.forEach(function(post){ %>
+        <div class="pricing-card col-lg-4 col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="title"><%= post.title %></h3>
+              </div>
+              <div class="card-body">
+                <p class="content"><%= post.content %></p>
+                <div class="d-grid mx-auto">
+                  <a href="/posts/<%= post._id %>"> Read more </a>
+                </div>
+              </div>
+            </div>
+          </div>
+    <% }) %>
+</div>
+<%- include('footer'); -%> 
